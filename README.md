@@ -63,6 +63,8 @@ It is a secure end-to-end traffic congestion system system which has been built 
       Weekend
 
       RushHour
+## Files Structure
+
 
 ## Database Specifications
 
