@@ -95,8 +95,14 @@ The designed system leverages serveless PostGreSQL database hosted on Neon
 
 OMAR KHALIFA
 
+**Project Link**
+
+https://uktrafficpredictor-ufl4vvlq9cro2jhzgmy8fo.streamlit.app
+
 **License**
 The project is for education purposes only 
+
+
 
 
 
