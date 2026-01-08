@@ -1,5 +1,6 @@
 <div align="center"> 
-UK Road Traffic Congestin predictor
+
+## UK Road Traffic Congestin predictor
 
 It is a secure end-to-end traffic congestion system system which has been built using streamlit, PostgreSQL, and machine learning model. The application supports real-time traffic forecasting, trained model upload, user authnetication, and CSV batch predictions
 
