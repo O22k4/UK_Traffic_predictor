@@ -100,6 +100,7 @@ OMAR KHALIFA
 https://uktrafficpredictor-ufl4vvlq9cro2jhzgmy8fo.streamlit.app
 
 **License**
+
 The project is for education purposes only 
 
 
