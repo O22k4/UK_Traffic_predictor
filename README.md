@@ -35,7 +35,7 @@ It is a secure end-to-end traffic congestion system system which has been built 
 | Auth       | bcrypt            |
 | Deployment | Streamlit Cloud   |
 
-**Database Requirments**
+## Database Requirments
 
 | Column Name  | Description        |
 | ---------- | ----------------- |
@@ -43,7 +43,7 @@ It is a secure end-to-end traffic congestion system system which has been built 
 | Vehicles    | Number of Vehicles            |
 | Date and Time         | Timestamp (YYYY-MM-DD HH:MM:SS)      |
 
-**Model Requirements** 
+## Model Requirements  
 - Must be a trained scikit-learn model
 
 - Saved using joblib.dump()
@@ -64,11 +64,11 @@ It is a secure end-to-end traffic congestion system system which has been built 
 
       RushHour
 
-**Database Specifications**
+## Database Specifications
 
 The designed system leverages serveless PostGreSQL database hosted on Neon
 
-**Deployment**
+## Deployment
 
 - Frontend: Streamlit Cloud
 
@@ -76,11 +76,11 @@ The designed system leverages serveless PostGreSQL database hosted on Neon
 
 - CI/CD: GitHub → Streamlit Cloud
 
-**Local deployment instructions**
+## Local deployment instructions
 
 (To Be added)
 
-**System Security**
+## System Security
 
 - Passwords hashed with bcrypt
 
@@ -88,7 +88,7 @@ The designed system leverages serveless PostGreSQL database hosted on Neon
 
 - Secrets managed using Streamlit Secrets
 
-**System Front-end**
+## System Front-end
 **Login Page**
 <img width="1825" height="956" alt="image" src="https://github.com/user-attachments/assets/06c3277f-9146-4c38-9024-6ce2b70abe31" />
 
@@ -101,15 +101,15 @@ The designed system leverages serveless PostGreSQL database hosted on Neon
 **Prediction Done**
 <img width="1640" height="972" alt="image" src="https://github.com/user-attachments/assets/5af43272-2d4e-44a7-befe-7d365eb76c51" />
 
-**Author**
+## Author
 
 OMAR KHALIFA
 
-**Project Link**
+## Project Link
 
 https://uktrafficpredictor-ufl4vvlq9cro2jhzgmy8fo.streamlit.app
 
-**License**
+## License 
 
 The project is for education purposes only 
 
