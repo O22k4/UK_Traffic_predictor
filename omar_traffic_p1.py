@@ -332,6 +332,13 @@ data_file = st.sidebar.file_uploader("📊 Upload Dataset (.csv)", type=["csv"])
 # ==========================
 model = None
 data = None
+# =========
+# Error CSV Read
+#  =========
+
+st.write("File size:", data_file.size)
+st.write("Current pointer position:", data_file.tell())
+
 
 if model_file:
     model, model_error = load_model_safely(model_file)
@@ -441,4 +448,5 @@ if st.button("Run Prediction for Entire Dataset"):
 # ================================
 st.markdown("---")
 st.caption("Developed by **Omar Khalifa** | Secure Traffic Prediction System")
+
 
