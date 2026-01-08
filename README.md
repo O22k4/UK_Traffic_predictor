@@ -1,11 +1,13 @@
 <div align="center"> 
-**UK Road Traffic Congestin predictor**
+UK Road Traffic Congestin predictor
 
 It is a secure end-to-end traffic congestion system system which has been built using streamlit, PostgreSQL, and machine learning model. The application supports real-time traffic forecasting, trained model upload, user authnetication, and CSV batch predictions
 
+**Features ▪︎ System architecture ▪︎ Database Requirments ▪︎ Model Requirments ▪︎ Database Specifications ▪︎ Deployment ▪︎ Local Deployment instructions  
+
 </div> 
 
-**Features**
+## Features
 
 - 🔐 User Authentication: Login & Registration
 
@@ -21,7 +23,7 @@ It is a secure end-to-end traffic congestion system system which has been built 
 
 - ☁️ Deployed on Streamlit Cloud
 
-**System architecture**
+## System architecture
 
 | Component  | Technology        |
 | ---------- | ----------------- |
@@ -61,7 +63,7 @@ It is a secure end-to-end traffic congestion system system which has been built 
 
       RushHour
 
-**Database Requirements**
+**Database Specifications**
 
 The designed system leverages serveless PostGreSQL database hosted on Neon
 
