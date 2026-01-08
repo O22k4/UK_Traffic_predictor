@@ -333,8 +333,6 @@ data_file = st.sidebar.file_uploader("📊 Upload Dataset (.csv)", type=["csv"])
 model = None
 data = None
 
-
-
 if model_file:
     model, model_error = load_model_safely(model_file)
     if model_error:
@@ -357,8 +355,8 @@ if data_file:
         st.error(f"❌ Failed to read dataset: {e}")
         st.stop()
 
-model = joblib.load(model_file) if model_file else None
-data = pd.read_csv(data_file) if data_file else None
+# model = joblib.load(model_file) if model_file else None
+# data = pd.read_csv(data_file) if data_file else None
 
 st.markdown("---")
 
@@ -443,6 +441,7 @@ if st.button("Run Prediction for Entire Dataset"):
 # ================================
 st.markdown("---")
 st.caption("Developed by **Omar Khalifa** | Secure Traffic Prediction System")
+
 
 
 
