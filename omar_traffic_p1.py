@@ -19,11 +19,12 @@ st.set_page_config(
 # DATABASE CONFIG
 # ================================
 DB_CONFIG = {
-    "host": "localhost",
+    "host": "ep-steep-morning-ahhoeiz5-pooler.c-3.us-east-1.aws.neon.tech",
     "database": "traffic_predictor_db",
-    "user": "postgres",
-    "password": "kali123?",  # 🔴 change before deployment
+    "user": "neondb_owner",
+    "password": "npg_XNZ0K2btduAc", 
     "port": 5432
+   
 }
 
 def get_db_connection():
@@ -440,3 +441,4 @@ if st.button("Run Prediction for Entire Dataset"):
 # ================================
 st.markdown("---")
 st.caption("Developed by **Omar Khalifa** | Secure Traffic Prediction System")
+
