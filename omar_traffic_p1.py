@@ -27,6 +27,8 @@ DB_CONFIG = {
    
 }
 
+
+
 def get_db_connection():
     return psycopg2.connect(**DB_CONFIG)
 
@@ -83,22 +85,26 @@ def build_feature_row(vehicles, date_input, time_input):
 #=================================
 def load_model_safely(uploaded_file):
     try:
-        model = joblib.load(uploaded_file)
+        loaded = joblib.load(uploaded_file)
 
-        if not hasattr(model, "predict"):
-            raise ValueError("Uploaded file is not a trained ML model.")
+        # Handle dictionary package
+        if isinstance(loaded, dict):
+            model = loaded.get("model")
+            metrics = loaded.get("metrics")
+            features = loaded.get("features")
+        else:
+            model = loaded
+            metrics = None
+            features = None
 
-        if hasattr(model, "feature_names_in_"):
-            missing = set(REQUIRED_FEATURES) - set(model.feature_names_in_)
-            if missing:
-                raise ValueError(
-                    f"Model trained with incompatible features. Missing: {missing}"
-                )
+        if model is None or not hasattr(model, "predict"):
+            raise ValueError("Uploaded file is not a valid trained ML model.")
 
-        return model, None
+        return model, metrics, features, None
 
     except Exception as e:
-        return None, str(e)
+        return None, None, None, str(e)
+
 # ================================
 # MODEL VALIDATOR
 # ===============================
@@ -332,16 +338,20 @@ data_file = st.sidebar.file_uploader("📊 Upload Dataset (.csv)", type=["csv"])
 # ==========================
 model = None
 data = None
+model_metrics = None
 
 if model_file:
-    model, model_error = load_model_safely(model_file)
+    model, model_metrics, model_features, model_error = load_model_safely(model_file)
     if model_error:
         st.error(
-            "❌ Invalid model uploaded.\n\n"
+            f"❌ Invalid model uploaded.\n\n"
+            f"{model_error}\n\n"
             "Please upload a **trained .pkl model** using features:\n"
             "Vehicles, Hour, DayOfWeek, Month, Weekend, RushHour"
         )
         st.stop()
+    else:
+        st.success("✅ Model loaded successfully")
 
 if data_file:
     try:
@@ -355,7 +365,7 @@ if data_file:
         st.error(f"❌ Failed to read dataset: {e}")
         st.stop()
 
-# model = joblib.load(model_file) if model_file else None
+#model = joblib.load(model_file) if model_file else None
 # data = pd.read_csv(data_file) if data_file else None
 
 st.markdown("---")
@@ -396,6 +406,39 @@ if model is not None and data is not None and "Junction" in data.columns:
                 st.warning("⚠️ MEDIUM TRAFFIC")
             else:
                 st.success("✅ LOW TRAFFIC")
+# ================================
+#  MODEL METRICS DASHBOARD
+# ================================
+if model_metrics:
+    st.markdown(" Designed Model Performance Metrics from the trained data- Click the button to view its performance")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        if st.button("✅ Accuracy"):
+            st.info(f"Accuracy: {model_metrics['accuracy']:.4f}")
+
+        if st.button("📝 Precision"):
+            st.info(f"Precision (weighted): {model_metrics['precision']:.4f}")
+
+    with col2:
+        if st.button("📈 Recall"):
+            st.info(f"Recall (weighted): {model_metrics['recall']:.4f}")
+
+        if st.button("🏆 F1 Score"):
+            st.info(f"F1 Score (weighted): {model_metrics['f1_score']:.4f}")
+
+    with col3:
+        if st.button("🧩 Confusion Matrix"):
+            st.dataframe(model_metrics["confusion_matrix"])
+
+        if st.button("📄 Classification Report"):
+            st.dataframe(pd.DataFrame(model_metrics["classification_report"]).transpose())
+
+    if st.button("🔧 Best Hyperparameters"):
+        st.json(model_metrics["best_params"])
+
+
 # ================================
 # BATCH PREDICTION
 # ================================
@@ -441,7 +484,3 @@ if st.button("Run Prediction for Entire Dataset"):
 # ================================
 st.markdown("---")
 st.caption("Developed by **Omar Khalifa** | Secure Traffic Prediction System")
-
-
-
-
