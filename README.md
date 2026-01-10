@@ -86,6 +86,10 @@ The designed system leverages serveless PostGreSQL database hosted on Neon
 
 (To Be added)
 
+## Application testing 
+
+ (To be Added)
+
 ## System Security
 
 - Passwords hashed with bcrypt
